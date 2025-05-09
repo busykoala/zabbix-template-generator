@@ -2,3 +2,5 @@
 /pkg/
 *.log
 *.test
+zabbix-config/
+
