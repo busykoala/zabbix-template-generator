@@ -1,15 +1,16 @@
-package test
+package zabbix_template_generator_test
 
 import (
 	"encoding/json"
-	"github.com/busykoala/zabbix-template-generator"
 	"testing"
+
+	generator "github.com/busykoala/zabbix-template-generator"
 )
 
 func TestGenerateBasicTemplate(t *testing.T) {
-	export := zabbix_template_generator.ZabbixExport{
+	export := generator.ZabbixExport{
 		Version: "6.0",
-		Templates: []zabbix_template_generator.Template{
+		Templates: []generator.Template{
 			{
 				UUID:     "test-uuid",
 				Host:     "TestHost",
@@ -19,7 +20,7 @@ func TestGenerateBasicTemplate(t *testing.T) {
 		},
 	}
 
-	data, err := zabbix_template_generator.Generate(export)
+	data, err := generator.Generate(export)
 	if err != nil {
 		t.Fatalf("Generate() returned error: %v", err)
 	}
