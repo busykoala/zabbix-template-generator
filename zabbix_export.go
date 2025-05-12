@@ -4,7 +4,7 @@ type ZabbixExport struct {
 	Version        string          `json:"version"`
 	TemplateGroups []TemplateGroup `json:"template_groups"`
 	Templates      []Template      `json:"templates"`
-	Graphs         []Graph         `json:"graphs"`
+	Graphs         []Graph         `json:"graphs,omitempty"`
 }
 
 type TemplateGroup struct {

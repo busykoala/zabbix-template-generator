@@ -35,14 +35,14 @@ type HTTPAgentItem struct {
 	Type          ZabbixItemType      `json:"type"`
 	Key           string              `json:"key"`
 	History       string              `json:"history"`
-	Trends        string              `json:"trends"`
+	Trends        string              `json:"trends,omitempty"`
 	ValueType     string              `json:"value_type"`
 	Description   string              `json:"description"`
-	PreProcessing []PreprocessingStep `json:"preprocessing"`
+	PreProcessing []PreprocessingStep `json:"preprocessing,omitempty"`
 	URL           string              `json:"url"`
-	RetrieveMode  string              `json:"retrieve_mode"`
-	Tags          []Tag               `json:"tags"`
-	Triggers      []Trigger           `json:"triggers"`
+	RetrieveMode  string              `json:"retrieve_mode,omitempty"`
+	Tags          []Tag               `json:"tags,omitempty"`
+	Triggers      []Trigger           `json:"triggers,omitempty"`
 }
 
 func (i HTTPAgentItem) ValidateType() bool {
