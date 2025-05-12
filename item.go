@@ -16,13 +16,13 @@ type DependentItem struct {
 	Name          string              `json:"name"`
 	Type          ZabbixItemType      `json:"type"`
 	Key           string              `json:"key"`
-	Delay         string              `json:"delay"`
+	Delay         string              `json:"delay,omitempty"`
 	ValueType     string              `json:"value_type"`
-	Units         string              `json:"units"`
+	Units         string              `json:"units,omitempty"`
 	Description   string              `json:"description"`
 	PreProcessing []PreprocessingStep `json:"preprocessing"`
 	MasterItem    MasterItem          `json:"master_item"`
-	Tags          []Tag               `json:"tags"`
+	Tags          []Tag               `json:"tags,omitempty"`
 }
 
 func (i DependentItem) ValidateType() bool {
