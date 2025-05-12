@@ -1,4 +1,4 @@
-package generator
+package zabbix_template_generator
 
 type Template struct {
 	UUID           string          `json:"uuid"`

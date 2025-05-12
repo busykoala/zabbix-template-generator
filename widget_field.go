@@ -1,4 +1,4 @@
-package generator
+package zabbix_template_generator
 
 const (
 	ZABBIX_WIDGET_FIELD_TYPE_INTEGER         ZabbixWidgetFieldType = "INTEGER"

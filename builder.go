@@ -1,4 +1,4 @@
-package generator
+package zabbix_template_generator
 
 import (
 	"encoding/json"

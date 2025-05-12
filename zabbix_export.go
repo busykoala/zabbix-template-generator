@@ -1,4 +1,4 @@
-package generator
+package zabbix_template_generator
 
 type ZabbixExport struct {
 	Version        string          `json:"version"`

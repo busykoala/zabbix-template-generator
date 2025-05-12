@@ -1,4 +1,4 @@
-package generator
+package zabbix_template_generator
 
 const (
 	ZABBIX_ITEM_TYPE_DEPENDENT  ZabbixItemType = "DEPENDENT"

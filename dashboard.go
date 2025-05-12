@@ -1,4 +1,4 @@
-package generator
+package zabbix_template_generator
 
 type ZabbixWidgetType string
 
