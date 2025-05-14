@@ -23,6 +23,7 @@ type DependentItem struct {
 	PreProcessing []PreprocessingStep `json:"preprocessing"`
 	MasterItem    MasterItem          `json:"master_item"`
 	Tags          []Tag               `json:"tags,omitempty"`
+	Triggers      []Trigger           `json:"triggers,omitempty"`
 }
 
 func (i DependentItem) ValidateType() bool {
@@ -60,13 +61,23 @@ type MasterItem struct {
 }
 
 type Trigger struct {
-	UUID        string `json:"uuid"`
-	Expression  string `json:"expression"`
-	Name        string `json:"name"`
-	EventName   string `json:"event_name"`
-	Priority    string `json:"priority"` // TODO: Make Type
-	Description string `json:"description,omitempty"`
-	ManualClose string `json:"manual_close,omitempty"`
-	// Dependencies []Dependency `json:"dependencies"` //TODO: Make Type
+	UUID        string          `json:"uuid"`
+	Expression  string          `json:"expression"`
+	Name        string          `json:"name"`
+	EventName   string          `json:"event_name,omitempty"`
+	Priority    TriggerPriority `json:"priority"`
+	Description string          `json:"description,omitempty"`
+	ManualClose string          `json:"manual_close,omitempty"`
+	// Dependencies []Dependency `json:"dependencies"` // TODO: Make Type
 	Tags []Tag `json:"tags,omitempty"`
 }
+
+type TriggerPriority string
+
+const (
+	PriorityInfo     TriggerPriority = "INFO"     // blue
+	PriorityWarn     TriggerPriority = "WARNING"  // yellow
+	PriorityAverage  TriggerPriority = "AVERAGE"  // orange
+	PriorityHigh     TriggerPriority = "HIGH"     // red
+	PriorityDisaster TriggerPriority = "DISASTER" // dark red
+)
