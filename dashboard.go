@@ -48,11 +48,11 @@ type Page struct {
 }
 
 type Widget struct {
-	Name   string           `json:"name"`
+	Name   string           `json:"name,omitempty"`
 	Type   ZabbixWidgetType `json:"type"`
 	Width  string           `json:"width"`
 	Height string           `json:"height"`
-	X      string           `json:"x"`
-	Y      string           `json:"y"`
+	X      string           `json:"x,omitempty"`
+	Y      string           `json:"y,omitempty"`
 	Fields []WidgetField    `json:"fields"`
 }

@@ -20,9 +20,13 @@ const (
 type ZabbixWidgetFieldType string
 
 type WidgetField struct {
-	Type ZabbixWidgetFieldType `json:"type"`
-	Name string                `json:"name"`
-	// TODO: https://www.zabbix.com/documentation/current/en/manual/api/reference/dashboard/widget_fields
-	// The values depend on the type
-	Value string `json:"value"`
+	Type  ZabbixWidgetFieldType `json:"type"`
+	Name  string                `json:"name"`
+	Value interface{}           `json:"value"`
+	// Checkout: https://www.zabbix.com/documentation/current/en/manual/api/reference/dashboard/widget_fields
+}
+
+type WidgetFieldHostKeyValue struct {
+	Host string `json:"host"`
+	Key  string `json:"key"`
 }

@@ -56,9 +56,35 @@ func main() {
 		},
 		Triggers: []generator.Trigger{dependentTrigger},
 	}
+	widgetFieldOne := generator.WidgetField{
+		Type: generator.ZABBIX_WIDGET_FIELD_TYPE_ITEM,
+		Name: "itemid.0",
+		Value: generator.WidgetFieldHostKeyValue{
+			Host: templateIdName,
+			Key:  "testitem.dependent",
+		},
+	}
+	widgetFieldTwo := generator.WidgetField{
+		Type:  generator.ZABBIX_WIDGET_FIELD_TYPE_STRING,
+		Name:  "max",
+		Value: "1",
+	}
+	widgetFieldThree := generator.WidgetField{
+		Type:  generator.ZABBIX_WIDGET_FIELD_TYPE_STRING,
+		Name:  "min",
+		Value: "0",
+	}
+
+	widget := generator.Widget{
+		Type:   generator.ZABBIX_WIDGET_TYPE_GAUGE,
+		Width:  "18",
+		Height: "5",
+		Fields: []generator.WidgetField{widgetFieldOne, widgetFieldTwo, widgetFieldThree},
+	}
 
 	page := generator.Page{
-		Name: "Test Page",
+		Name:    "Test Page",
+		Widgets: []generator.Widget{widget},
 	}
 	dashboard := generator.Dashboard{
 		UUID:  generator.GenerateUUID(),
