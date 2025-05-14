@@ -27,7 +27,7 @@ func main() {
 		Type:        generator.ZABBIX_ITEM_TYPE_HTTP_AGENT,
 		Key:         "testitem",
 		History:     "1h",
-		ValueType:   "TEXT",
+		ValueType:   generator.ItemValueTypeText,
 		Description: "Test Item for HTTP query",
 		URL:         "https://jsonplaceholder.typicode.com/todos/1",
 		Triggers:    []generator.Trigger{trigger},
@@ -43,7 +43,7 @@ func main() {
 		Name:        "Test Item: Dep",
 		Type:        generator.ZABBIX_ITEM_TYPE_DEPENDENT,
 		Key:         "testitem.dependent",
-		ValueType:   "TEXT",
+		ValueType:   generator.ItemValueTypeUnsigned,
 		Description: "Test Item for HTTP query: Dep",
 		PreProcessing: []generator.PreprocessingStep{
 			{
@@ -57,15 +57,25 @@ func main() {
 		Triggers: []generator.Trigger{dependentTrigger},
 	}
 
+	page := generator.Page{
+		Name: "Test Page",
+	}
+	dashboard := generator.Dashboard{
+		UUID:  generator.GenerateUUID(),
+		Name:  "Test Dashboard",
+		Pages: []generator.Page{page},
+	}
+
 	export := generator.ZabbixExport{
 		Version: "7.2",
 		Templates: []generator.Template{
 			{
-				UUID:     generator.GenerateUUID(),
-				Template: templateIdName,
-				Name:     "Test Template",
-				Groups:   []generator.Group{group},
-				Items:    []generator.Item{item, dependentItem},
+				UUID:       generator.GenerateUUID(),
+				Template:   templateIdName,
+				Name:       "Test Template",
+				Groups:     []generator.Group{group},
+				Items:      []generator.Item{item, dependentItem},
+				Dashboards: []generator.Dashboard{dashboard},
 			},
 		},
 		TemplateGroups: []generator.TemplateGroup{templateGroup},

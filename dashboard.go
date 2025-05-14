@@ -44,7 +44,7 @@ type Dashboard struct {
 
 type Page struct {
 	Name    string   `json:"name"`
-	Widgets []Widget `json:"widgets"`
+	Widgets []Widget `json:"widgets,omitempty"`
 }
 
 type Widget struct {
