@@ -5,7 +5,7 @@ import (
 )
 
 func Generate(export ZabbixExport) ([]byte, error) {
-	return json.MarshalIndent(map[string]any{
+	return json.Marshal(map[string]any{
 		"zabbix_export": export,
-	}, "", "    ")
+	})
 }
